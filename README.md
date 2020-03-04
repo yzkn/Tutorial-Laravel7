@@ -291,3 +291,13 @@ $ php artisan make:model SubItem --migration
 
 -   `database/migrations/2020_03_05_084214_create_items_table.php`
 -   `database/migrations/2020_03_05_084232_create_sub_items_table.php`
+
+### マイグレーションの実行
+
+```bat
+$ php artisan migrate
+```
+
+> Migrating: 2020_03_05_084232_create_sub_items_table
+>
+> Migrated: 2020_03_05_084232_create_sub_items_table (0.01 seconds)

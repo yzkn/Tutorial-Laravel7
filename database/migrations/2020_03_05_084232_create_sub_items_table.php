@@ -16,6 +16,13 @@ class CreateSubItemsTable extends Migration
         Schema::create('sub_items', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->unsignedInteger('item_id');
+
+            $table->text('subtitle')->nullable();
+            $table->text('subcontent')->nullable();
+
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade'); // 外部キー制約
         });
     }
 

@@ -240,3 +240,36 @@ $ php artisan --version
 ```
 
 > Laravel Framework 7.0.2
+
+### ロケールの設定
+
+-   config/app.php
+
+```php
+'timezone' => 'Asia/Tokyo',
+'locale' => 'ja',
+```
+
+### Database を SQLite に設定
+
+-   .env
+
+```
+DB_CONNECTION=sqlite
+```
+
+```ps
+$ php artisan migrate
+```
+
+### とりあえずサーバーを起動してみる
+
+```ps
+$ php artisan serve
+```
+
+```
+Laravel development server started: http://127.0.0.1:8000
+```
+
+[http://127.0.0.1:8000](http://127.0.0.1:8000)にアクセスして動作確認する

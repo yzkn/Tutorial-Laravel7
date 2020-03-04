@@ -273,3 +273,21 @@ Laravel development server started: http://127.0.0.1:8000
 ```
 
 [http://127.0.0.1:8000](http://127.0.0.1:8000)にアクセスして動作確認する
+
+## アイテム格納用にデータベースとモデルを作成
+
+### マイグレーションファイルとモデルの生成
+
+```bat
+$ php artisan make:model Item --migration
+$ php artisan make:model SubItem --migration
+```
+
+生成されたファイルのパスを確認、それぞれ開き、カラムを追記する
+
+> Created Migration: 2020_03_05_084214_create_items_table
+>
+> Created Migration: 2020_03_05_084232_create_sub_items_table
+
+-   `database/migrations/2020_03_05_084214_create_items_table.php`
+-   `database/migrations/2020_03_05_084232_create_sub_items_table.php`

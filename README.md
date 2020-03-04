@@ -235,7 +235,7 @@ $ cd .\Tutorial-Laravel7\
 
 ### Laravel のバージョンを確認
 
-```bat
+```ps
 $ php artisan --version
 ```
 
@@ -278,7 +278,7 @@ Laravel development server started: http://127.0.0.1:8000
 
 ### マイグレーションファイルとモデルの生成
 
-```bat
+```ps
 $ php artisan make:model Item --migration
 $ php artisan make:model SubItem --migration
 ```
@@ -294,7 +294,7 @@ $ php artisan make:model SubItem --migration
 
 ### マイグレーションの実行
 
-```bat
+```ps
 $ php artisan migrate
 ```
 

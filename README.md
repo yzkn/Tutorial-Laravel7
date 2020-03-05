@@ -319,3 +319,8 @@ $ php artisan migrate
 $ php artisan make:controller ItemController --resource
 $ php artisan make:controller SubItemController --resource
 ```
+
+作成されたコントローラーに `use` 句を追記する
+
+-   `app\Http\Controllers\ItemController.php`
+-   `app\Http\Controllers\SubItemController.php`

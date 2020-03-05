@@ -27,7 +27,7 @@ class SubItemController extends Controller
     public function create()
     {
         $sub_item = new SubItem;
-        return view('sub_item.create', ['sub_item' => $sub_item]);
+        return view('sub_item.edit', ['sub_item' => $sub_item]);
     }
 
     /**

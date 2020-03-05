@@ -15,7 +15,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::all();
+        return view('item.index', ['items' => $items]);
     }
 
     /**
@@ -25,7 +26,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        $item = new Item;
+        return view('item.create', ['item' => $item]);
     }
 
     /**
@@ -36,7 +38,11 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new Item;
+        $form = $request->all();
+        unset($form['_token']);
+        $item->fill($form)->save();
+        return redirect('/item');
     }
 
     /**
@@ -47,7 +53,8 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Item::find($id);
+        return view('item.show', ['item' => $item]);
     }
 
     /**
@@ -58,7 +65,8 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Item::find($id);
+        return view('item.edit', ['item' => $item]);
     }
 
     /**
@@ -70,7 +78,11 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = Item::find($id);
+        $form = $request->all();
+        unset($form['_token']);
+        $item->fill($form)->save();
+        return redirect('/item');
     }
 
     /**
@@ -81,6 +93,8 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Item::find($id);
+        $item->delete();
+        return redirect('/item');
     }
 }

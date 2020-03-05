@@ -313,7 +313,7 @@ $ php artisan migrate
 >
 > Migrated: 2020_03_05_084232_create_sub_items_table (0.01 seconds)
 
-### コントローラーを作成
+### コントローラーを作成・編集
 
 ```ps
 $ php artisan make:controller ItemController --resource

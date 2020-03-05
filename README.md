@@ -292,6 +292,17 @@ $ php artisan make:model SubItem --migration
 -   `database/migrations/2020_03_05_084214_create_items_table.php`
 -   `database/migrations/2020_03_05_084232_create_sub_items_table.php`
 
+### モデルの編集
+
+ユーザーに値を格納させないフィールドを指定する
+
+-   `app/Item.php`
+-   `app/SubItem.php`
+
+```php
+protected $guarded = array('id');
+```
+
 ### マイグレーションの実行
 
 ```ps

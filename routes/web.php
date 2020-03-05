@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('item', 'ItemController')->middleware('auth');
+Route::resource('subitem', 'SubItemController')->middleware('auth');

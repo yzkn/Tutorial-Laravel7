@@ -13,3 +13,5 @@ class Item extends Model
         return $this->hasMany('App\SubItem');
     }
 }
+
+// Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

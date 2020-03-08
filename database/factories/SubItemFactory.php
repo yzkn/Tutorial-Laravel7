@@ -15,3 +15,5 @@ $factory->define(SubItem::class, function (Faker $faker) {
         }
     ];
 });
+
+// Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

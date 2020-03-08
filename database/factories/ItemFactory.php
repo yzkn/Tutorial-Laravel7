@@ -11,3 +11,5 @@ $factory->define(Item::class, function (Faker $faker) {
         'content' => str_random(256),
     ];
 });
+
+// Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

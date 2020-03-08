@@ -20,7 +20,7 @@ $title = __('Items');
                 <dd class="col-md-10">
                     <ul>
                         @foreach($item->sub_items as $sub_item)
-                        <li>{{$sub_item->subtitle}}</li>
+                        <li><a href="{{ url('subitem/'.$sub_item->id) }}">{{ $sub_item->subtitle }}</a></li>
                         @endforeach
                     </ul>
                 </dd>
@@ -42,3 +42,5 @@ $title = __('Items');
     </div>
 </div>
 @endsection
+
+{{-- Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved. --}}

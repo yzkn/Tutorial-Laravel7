@@ -14,3 +14,5 @@ class SubItemSeeder extends Seeder
         factory('App\SubItem', 10)->create();
     }
 }
+
+// Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

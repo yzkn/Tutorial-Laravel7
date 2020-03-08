@@ -17,3 +17,5 @@ class ItemSeeder extends Seeder
         factory('App\Item', 10)->create();
     }
 }
+
+// Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

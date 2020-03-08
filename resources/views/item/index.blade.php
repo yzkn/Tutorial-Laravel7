@@ -21,7 +21,8 @@ $title = __('Items');
                     <tr>
                         <th class="sort" data-sort="id">{{ __('ID') }}</th>
                         <th class="sort" data-sort="title">{{ __('Title') }}</th>
-                        <th class="sort" data-sort="content">{{ __('Content') }}</th>
+                        <th class="sort" data-sort="content">{{ __('Content')
+                            }}</th>
                         <th class="sort" data-sort="created_at">{{ __('Created at') }}</th>
                         <th class="sort" data-sort="updated_at">{{ __('Updated at') }}</th>
                         <th></th>
@@ -57,3 +58,5 @@ $title = __('Items');
     </div>
 </div>
 @endsection
+
+{{-- Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved. --}}

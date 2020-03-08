@@ -17,7 +17,7 @@ $title = __('SubItems');
                 <dt class="col-md-2">{{ __('Sub Content') }}</dt>
                 <dd class="col-md-10">{{ $sub_item->subcontent }}</dd>
                 <dt class="col-md-2">{{ __('Parent') }}</dt>
-                <dd class="col-md-10">{{ $sub_item->item['title'] }}</dd>
+                <dd class="col-md-10"><a href="{{ url('item/'.$sub_item->item['id']) }}">{{ $sub_item->item['title'] }}</a></dd>
             </dl>
         </div>
         <div class="card-footer text-muted">
@@ -36,3 +36,5 @@ $title = __('SubItems');
     </div>
 </div>
 @endsection
+
+{{-- Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved. --}}

@@ -36,3 +36,5 @@ class CreateSubItemsTable extends Migration
         Schema::dropIfExists('sub_items');
     }
 }
+
+// Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

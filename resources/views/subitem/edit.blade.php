@@ -40,6 +40,13 @@ $title = __('SubItems');
                             @endforeach
                         </select>
                     </dd>
+                    <dt class="col-md-2">{{ __('File') }}</dt>
+                    <dd class="col-md-10">
+                        @isset ($sub_item->filepath)
+                            <a href="{{ asset('storage/uploaded/' . $sub_item->filepath) }}"><img src="{{ asset('storage/uploaded/' . $sub_item->filepath) }}"></a>
+                        @endisset
+                        <input type="file" class="form-control" name="filepath"  id="filepath" />
+                    </dd>
                 </dl>
             </div>
             <div class="card-footer text-muted">

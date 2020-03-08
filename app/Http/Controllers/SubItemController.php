@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Item;
 use App\SubItem;
+
+use App\Services\Util;
 
 class SubItemController extends Controller
 {
@@ -42,7 +45,34 @@ class SubItemController extends Controller
         $sub_item = new SubItem;
         $form = $request->all();
         unset($form['_token']);
-        $sub_item->fill($form)->save();
+        $sub_item->fill($form);
+
+        if(null !== ($request->file('filepath')))
+        {
+            $file = $request->file('filepath');
+            // dump("getClientOriginalName: " . $file->getClientOriginalName());
+            // dump("getClientOriginalExtension: " . $file->getClientOriginalExtension());
+            // dump("getClientMimeType: " . $file->getClientMimeType());
+            // dump("guessClientExtension: " . $file->guessClientExtension());
+            // dump("getSize: " . $file->getSize());
+            // dump("getError: " . $file->getError());
+            // dump("getMaxFilesize: " . $file->getMaxFilesize());
+
+            $temppath = $request->file('filepath')->store('public/temp');
+            $temppath = str_replace('public/temp', 'storage/temp', $temppath);
+            if(!\App\Services\Util::is_picture($temppath)){
+                Storage::delete($temppath);
+                $sub_item->save();
+                return redirect('/subitem');
+            }
+
+            Storage::delete($temppath);
+            $newpath = \App\Services\Util::GUID();
+            $request->file('filepath')->storeAs('public/uploaded', $newpath);
+            $sub_item->filepath = $newpath;
+        }
+
+        $sub_item->save();
         return redirect('/subitem');
     }
 

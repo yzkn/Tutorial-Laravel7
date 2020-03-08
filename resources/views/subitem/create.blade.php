@@ -37,6 +37,10 @@ $title = __('SubItems');
                             @endforeach
                         </select>
                     </dd>
+                    <dt class="col-md-2">{{ __('File') }}</dt>
+                    <dd class="col-md-10">
+                        <input type="file" class="form-control" name="filepath"  id="filepath" />
+                    </dd>
                 </dl>
             </div>
             <div class="card-footer text-muted">

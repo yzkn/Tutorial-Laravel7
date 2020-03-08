@@ -26,8 +26,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $item = new Item;
-        return view('item.edit', ['item' => $item]);
+        return view('item.create');
     }
 
     /**

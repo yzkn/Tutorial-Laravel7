@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Item;
 use App\SubItem;
 
 class SubItemController extends Controller
@@ -16,7 +17,7 @@ class SubItemController extends Controller
     public function index()
     {
         $sub_items = SubItem::all();
-        return view('sub_item.index', ['sub_items' => $sub_items]);
+        return view('subitem.index', ['sub_items' => $sub_items]);
     }
 
     /**
@@ -26,8 +27,8 @@ class SubItemController extends Controller
      */
     public function create()
     {
-        $sub_item = new SubItem;
-        return view('sub_item.edit', ['sub_item' => $sub_item]);
+        $items = Item::all();
+        return view('subitem.create', ['items' => $items]);
     }
 
     /**
@@ -42,7 +43,7 @@ class SubItemController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $sub_item->fill($form)->save();
-        return redirect('/sub_item');
+        return redirect('/subitem');
     }
 
     /**
@@ -54,7 +55,7 @@ class SubItemController extends Controller
     public function show($id)
     {
         $sub_item = SubItem::find($id);
-        return view('sub_item.show', ['sub_item' => $sub_item]);
+        return view('subitem.show', ['sub_item' => $sub_item]);
     }
 
     /**
@@ -65,8 +66,9 @@ class SubItemController extends Controller
      */
     public function edit($id)
     {
+        $items = Item::all();
         $sub_item = SubItem::find($id);
-        return view('sub_item.edit', ['sub_item' => $sub_item]);
+        return view('subitem.edit', ['items' => $items, 'sub_item' => $sub_item]);
     }
 
     /**
@@ -82,7 +84,7 @@ class SubItemController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $sub_item->fill($form)->save();
-        return redirect('/sub_item');
+        return redirect('/subitem');
     }
 
     /**
@@ -95,6 +97,6 @@ class SubItemController extends Controller
     {
         $sub_item = SubItem::find($id);
         $sub_item->delete();
-        return redirect('/sub_item');
+        return redirect('/subitem');
     }
 }

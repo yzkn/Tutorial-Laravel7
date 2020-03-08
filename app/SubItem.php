@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class SubItem extends Model
 {
     protected $guarded = array('id');
+
+    public function item()
+    {
+        return $this->belongsTo('App\Item');
+    }
 }

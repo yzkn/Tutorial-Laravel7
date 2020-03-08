@@ -2,6 +2,10 @@
 
 ---
 
+## Demo
+
+[動画](demo.mp4)
+
 ## 設定値
 
 -   アプリケーション名: `Tutorial-Laravel7`

@@ -33,6 +33,7 @@ Generating autoload files
 
 ```ps
 $ cd C:\Users\y\Documents\GitHub
+$ composer require laravel/helpers
 $ laravel new Tutorial-Laravel7 --auth --force
 ```
 
@@ -248,6 +249,8 @@ $ php artisan --version
 ```php
 'timezone' => 'Asia/Tokyo',
 'locale' => 'ja',
+
+'faker_locale' => 'ja_JP',
 ```
 
 ### Database を SQLite に設定
@@ -276,11 +279,11 @@ Laravel development server started: http://127.0.0.1:8000
 
 ## アイテム格納用にデータベースとモデルを作成
 
-### マイグレーションファイルとモデルの生成
+### マイグレーションファイルとモデル、ファクトリの生成
 
 ```ps
-$ php artisan make:model Item --migration
-$ php artisan make:model SubItem --migration
+$ php artisan make:model Item --migration --factory
+$ php artisan make:model SubItem --migration --factory
 ```
 
 生成されたファイルのパスを確認、それぞれ開き、カラムを追記する
@@ -324,3 +327,57 @@ $ php artisan make:controller SubItemController --resource
 
 -   `app\Http\Controllers\ItemController.php`
 -   `app\Http\Controllers\SubItemController.php`
+
+### ビューを追加
+
+-   `resources\views\item\*.blade.php`
+-   `resources\views\subitem\*.blade.php`
+
+### テストデータの挿入
+
+ファクトリを編集
+
+-   `database/factories/ItemFactory.php`
+-   `database/factories/SubItemFactory.php`
+
+シーダ―を作成
+
+```ps
+$ php artisan make:seeder ItemSeeder
+$ php artisan make:seeder SubItemSeeder
+```
+
+-   `database/seeds/ItemSeeder.php`
+
+```php
+factory('App\Item', 10)->create(); // 追記
+```
+
+-   `database/seeds/SubItemSeeder.php`
+
+```php
+factory('App\SubItem', 10)->create(); // 追記
+```
+
+-   `database/seeds/DatabaseSeeder.php` // 追記
+
+```php
+$this->call(ItemSeeder::class);
+```
+
+シーダーを実行
+
+```ps
+$ REM 一旦DBをリセットしてからテストデータを入れる場合は右のコマンドを実行する: $ php artisan migrate:refresh
+$ php artisan db:seed
+```
+
+> Seeding: ItemSeeder
+>
+> Seeded: ItemSeeder (0.09 seconds)
+>
+> Seeding: SubItemSeeder
+>
+> Seeded: SubItemSeeder (0.07 seconds)
+>
+> Database seeding completed successfully.

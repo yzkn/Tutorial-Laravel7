@@ -6,13 +6,6 @@ $title = __('SubItems');
 @section('content')
 <div class="container">
     <h1><a href="{{ url('subitem/') }}" class="text-dark">{{ $title }}</a></h1>
-    @if (count($errors) > 0)
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    @endif
     <form action="{{ url('subitem/'.$sub_item->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')

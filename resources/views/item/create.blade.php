@@ -6,13 +6,6 @@ $title = __('Items');
 @section('content')
 <div class="container">
     <h1><a href="{{ url('item/') }}" class="text-dark">{{ $title }}</a></h1>
-    @if (count($errors) > 0)
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    @endif
     <form action="{{ url('item/') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card">

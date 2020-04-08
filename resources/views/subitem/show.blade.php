@@ -19,7 +19,7 @@ $title = __('SubItems');
                 <dt class="col-md-2">{{ __('Parent') }}</dt>
                 <dd class="col-md-10"><a href="{{ url('item/'.$sub_item->item['id']) }}">{{ $sub_item->item['title'] }}</a></dd>
                 <dt class="col-md-2">{{ __('File') }}</dt>
-                <dd class="col-md-10">{{ $sub_item->filepath }}
+                <dd class="col-md-10">
                     @isset ($sub_item->filepath)
                         <a href="{{ asset('storage/uploaded/' . $sub_item->filepath) }}"><img src="{{ asset('storage/uploaded/' . $sub_item->filepath) }}"></a>
                     @endisset

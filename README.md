@@ -241,11 +241,19 @@ $ php artisan migrate
 
 公開ディレクトリからアップロード先ディレクトリにシンボリックリンクを張る
 
-```ps
+```bat
 $ php artisan storage:link
 
 $ cd C:\Users\y\Documents\GitHub\Tutorial-Laravel7\public
 $ mklink temp C:\Users\y\Documents\GitHub\Tutorial-Laravel7\public\storage\temp /D
+$ mklink uploaded C:\Users\y\Documents\GitHub\Tutorial-Laravel7\public\storage\uploaded /D
+```
+
+## バリデーションを追加する
+
+```ps
+$ php artisan make:request ItemRequest
+$ php artisan make:request SubItemRequest
 ```
 
 ---

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Item;
 
+use App\Http\Requests\ItemRequest;
+
 class ItemController extends Controller
 {
     /**
@@ -35,7 +37,7 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
         $item = new Item;
         $form = $request->all();

@@ -37,6 +37,7 @@ $title = __('SubItems');
                     <dd class="col-md-10">
                         @isset ($sub_item->filepath)
                             <a href="{{ asset('storage/uploaded/' . $sub_item->filepath) }}"><img src="{{ asset('storage/uploaded/' . $sub_item->filepath) }}"></a>
+                            <br>
                         @endisset
                         <input type="file" class="form-control" name="filepath"  id="filepath" />
                     </dd>

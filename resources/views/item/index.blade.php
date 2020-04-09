@@ -13,13 +13,24 @@ $title = __('Items');
                     <tr>
                         <th colspan="4">
                             <form class="form-inline" method="GET" action="{{url('/item')}}">
+                                @foreach ($request as $key=>$value)
+                                    @if ($key!="q")
+                                        <input type="hidden" name="{{$key}}" value="{{$value}}" />
+                                    @endif
+                                @endforeach
                                 <div class="form-group">
-                                    <input type="text" name="q" value="{{$q}}" class="form-control" placeholder="{{ __('Search') }}">
+                                    <input type="text" name="q" value="{{$request['q'] ?? ''}}" class="form-control" placeholder="{{ __('Search') }}">
                                 </div>
                                 <input type="submit" value="{{ __('Search') }}" class="btn btn-info">
+                                <select class="custom-select" name="perpage" onchange="this.form.submit()">
+                                    <option value="10" {{($request["perpage"] ?? "")==10?"selected":""}}>10</option>
+                                    <option value="20" {{($request["perpage"] ?? "")==20?"selected":""}}>20</option>
+                                    <option value="50" {{($request["perpage"] ?? "")==50?"selected":""}}>50</option>
+                                    <option value="100" {{($request["perpage"] ?? "")==100?"selected":""}}>100</option>
+                                </select>
                             </form>
                         </th>
-                        <th colspan="1">
+                        <th>
                         </th>
                         <th>
                             <a href="{{ url('item/create') }}" class="btn btn-info">{{ __('Create') }}</a>
@@ -59,6 +70,11 @@ $title = __('Items');
                         </td>
                     </tr>
                     @endforeach
+                    <tr>
+                        <th colspan="6" class="center-block">
+                            {{ $items->links() }}
+                        </th>
+                    </tr>
                 </tbody>
             </table>
         </div>

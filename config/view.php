@@ -46,4 +46,6 @@ return [
 
     'expires' => env('VIEW_CHECK_EXPIRATION', true),
 
+    'perpage' => 10,
+
 ];

@@ -26,16 +26,17 @@ class SubItemController extends Controller
     {
         Log::info('$request: '.$request);
         $q = $request->input('q');
+        $perpage = $request->input('perpage', config('view.perpage'));
         $query = SubItem::query();
 
         if(!empty($q)) {
             $query->where('subtitle','like','%'.$q.'%')->orWhere('subcontent','like','%'.$q.'%');
         }
 
-        $sub_items = $query->orderBy('created_at','desc')->get();
+        $sub_items = $query->orderBy('created_at','desc')->paginate($perpage);  // ->get();
         return view('subitem.index')
-        ->with('sub_items',$sub_items)
-        ->with('q',$q);
+        ->with('sub_items',$sub_items->appends($request->except('page')))
+        ->with('request',$request->except('page'));
     }
 
     /**

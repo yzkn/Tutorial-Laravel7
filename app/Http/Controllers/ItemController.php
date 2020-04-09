@@ -20,16 +20,17 @@ class ItemController extends Controller
     {
         Log::info('$request: '.$request);
         $q = $request->input('q');
+        $perpage = $request->input('perpage', config('view.perpage'));
         $query = Item::query();
 
         if(!empty($q)) {
             $query->where('title','like','%'.$q.'%')->orWhere('content','like','%'.$q.'%');
         }
 
-        $items = $query->orderBy('created_at','desc')->get();
+        $items = $query->orderBy('created_at','desc')->paginate($perpage);  // get();
         return view('item.index')
-        ->with('items',$items)
-        ->with('q',$q);
+        ->with('items',$items->appends($request->except('page')))
+        ->with('request',$request->except('page'));
     }
 
     /**

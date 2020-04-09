@@ -265,6 +265,11 @@ $ php artisan make:request SubItemRequest
 -   `resources\views\item\index.blade.php`
 -   `resources\views\subitem\index.blade.php`
 
+## ページネーションを追加する
+
+検索機能を追加した時の 4 ファイルと、設定ファイル( `view.php` )、CSS ファイル( `custom.css` )を変更する。
+CSS はページリンクの配置を中央揃えにするために使用した(th タグ等に中央揃えを指定しても効かない)
+
 ---
 
 Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

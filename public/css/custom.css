@@ -6,6 +6,10 @@ div#subitems table td {
     word-break: break-all;
 }
 
+.pagination {
+    justify-content: center;
+}
+
 /*
     Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.
 */

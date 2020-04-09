@@ -22,10 +22,20 @@ class SubItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sub_items = SubItem::all();
-        return view('subitem.index', ['sub_items' => $sub_items]);
+        Log::info('$request: '.$request);
+        $q = $request->input('q');
+        $query = SubItem::query();
+
+        if(!empty($q)) {
+            $query->where('subtitle','like','%'.$q.'%')->orWhere('subcontent','like','%'.$q.'%');
+        }
+
+        $sub_items = $query->orderBy('created_at','desc')->get();
+        return view('subitem.index')
+        ->with('sub_items',$sub_items)
+        ->with('q',$q);
     }
 
     /**

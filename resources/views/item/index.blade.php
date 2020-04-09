@@ -11,8 +11,15 @@ $title = __('Items');
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th colspan="5">
-                            <input type="text" class="form-control search" placeholder="Search" />
+                        <th colspan="4">
+                            <form class="form-inline" method="GET" action="{{url('/item')}}">
+                                <div class="form-group">
+                                    <input type="text" name="q" value="{{$q}}" class="form-control" placeholder="{{ __('Search') }}">
+                                </div>
+                                <input type="submit" value="{{ __('Search') }}" class="btn btn-info">
+                            </form>
+                        </th>
+                        <th colspan="1">
                         </th>
                         <th>
                             <a href="{{ url('item/create') }}" class="btn btn-info">{{ __('Create') }}</a>

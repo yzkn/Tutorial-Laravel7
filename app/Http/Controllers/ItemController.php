@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use App\Item;
 
@@ -15,10 +16,20 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = Item::all();
-        return view('item.index', ['items' => $items]);
+        Log::info('$request: '.$request);
+        $q = $request->input('q');
+        $query = Item::query();
+
+        if(!empty($q)) {
+            $query->where('title','like','%'.$q.'%')->orWhere('content','like','%'.$q.'%');
+        }
+
+        $items = $query->orderBy('created_at','desc')->get();
+        return view('item.index')
+        ->with('items',$items)
+        ->with('q',$q);
     }
 
     /**

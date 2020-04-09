@@ -11,8 +11,15 @@ $title = __('SubItems');
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th colspan="6">
-                            <input type="text" class="form-control search" placeholder="Search" />
+                        <th colspan="4">
+                            <form class="form-inline" method="GET" action="{{url('/subitem')}}">
+                                <div class="form-group">
+                                    <input type="text" name="q" value="{{$q}}" class="form-control" placeholder="{{ __('Search') }}">
+                                </div>
+                                <input type="submit" value="{{ __('Search') }}" class="btn btn-info">
+                            </form>
+                        </th>
+                        <th colspan="2">
                         </th>
                         <th>
                             <a href="{{ url('subitem/create') }}" class="btn btn-info">{{ __('Create') }}</a>

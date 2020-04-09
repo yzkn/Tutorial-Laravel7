@@ -256,6 +256,15 @@ $ php artisan make:request ItemRequest
 $ php artisan make:request SubItemRequest
 ```
 
+## 検索機能を追加する
+
+コントローラーとビューを変更する
+
+-   `app\Http\Controllers\ItemController.php`
+-   `app\Http\Controllers\SubItemController.php`
+-   `resources\views\item\index.blade.php`
+-   `resources\views\subitem\index.blade.php`
+
 ---
 
 Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

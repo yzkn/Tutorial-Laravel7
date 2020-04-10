@@ -292,6 +292,27 @@ $ php artisan jwt:secret
 $ php artisan make:controller ApiController
 ```
 
+### ルーティングを追加する
+
+### 動作確認する
+
+POST [/api/login](http://127.0.0.1:8000/api/login) に、以下のヘッダを指定してリクエストを送信し、 `access_token` を取得できることを確認する
+
+-   ヘッダ
+    -   `Content-Type`
+        -   `application/json`
+-   リクエストボディ
+    -   `email`
+        -   <メールアドレス>
+    -   `password`
+        -   <パスワード>
+
+GET [/api/me](http://127.0.0.1:8000/api/me) に、以下のヘッダを指定してリクエストを送信し、ログインユーザーの情報を取得できることを確認する
+
+-   ヘッダ
+    -   `Authorization`
+        -   `Bearer <上で取得したaccess_token>`
+
 ---
 
 Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

@@ -272,6 +272,18 @@ CSS はページリンクの配置を中央揃えにするために使用した(
 
 ## デバッグログを記録する
 
+## JWT 認証の API を追加する
+
+### jwt-auth (1.0.0) をインストールする
+
+```ps
+$ composer require tymon/jwt-auth
+
+$ php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+$ php artisan jwt:secret
+```
+
 ---
 
 Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

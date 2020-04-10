@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 use App\Item;
@@ -18,7 +19,10 @@ class ItemController extends Controller
      */
     public function index(Request $request)
     {
-        Log::info('$request: '.$request);
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$request: '.$request);
+
         $q = $request->input('q');
         $perpage = $request->input('perpage', config('view.perpage'));
         $query = Item::query();
@@ -27,7 +31,7 @@ class ItemController extends Controller
             $query->where('title','like','%'.$q.'%')->orWhere('content','like','%'.$q.'%');
         }
 
-        $items = $query->orderBy('created_at','desc')->paginate($perpage);  // get();
+        $items = $query->orderBy('created_at','desc')->paginate($perpage);  // simplePaginate($perpage);  // get();
         return view('item.index')
         ->with('items',$items->appends($request->except('page')))
         ->with('request',$request->except('page'));
@@ -40,6 +44,9 @@ class ItemController extends Controller
      */
     public function create()
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+
         return view('item.create');
     }
 
@@ -51,6 +58,10 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$request: '.$request);
+
         $item = new Item;
         $form = $request->all();
         unset($form['_token']);
@@ -66,6 +77,10 @@ class ItemController extends Controller
      */
     public function show($id)
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$id: '.$id);
+
         $item = Item::find($id);
         return view('item.show', ['item' => $item]);
     }
@@ -78,6 +93,10 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$id: '.$id);
+
         $item = Item::find($id);
         return view('item.edit', ['item' => $item]);
     }
@@ -91,6 +110,11 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$id: '.$id);
+        Log::debug('$request: '.$request);
+
         $item = Item::find($id);
         $form = $request->all();
         unset($form['_token']);
@@ -106,6 +130,10 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$id: '.$id);
+
         $item = Item::find($id);
         $item->delete();
         return redirect('/item');

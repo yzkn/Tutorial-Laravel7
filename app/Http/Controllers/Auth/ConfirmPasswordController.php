@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
+use Illuminate\Support\Facades\Log;
 
 class ConfirmPasswordController extends Controller
 {
@@ -35,6 +36,8 @@ class ConfirmPasswordController extends Controller
      */
     public function __construct()
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+
         $this->middleware('auth');
     }
 }

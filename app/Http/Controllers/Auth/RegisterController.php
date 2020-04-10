@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -38,6 +39,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+
         $this->middleware('guest');
     }
 
@@ -49,6 +52,9 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('$data: '.$data);
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -64,6 +70,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('$data: '.$data);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

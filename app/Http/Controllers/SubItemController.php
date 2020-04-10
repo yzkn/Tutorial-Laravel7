@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,7 +25,10 @@ class SubItemController extends Controller
      */
     public function index(Request $request)
     {
-        Log::info('$request: '.$request);
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$request: '.$request);
+
         $q = $request->input('q');
         $perpage = $request->input('perpage', config('view.perpage'));
         $query = SubItem::query();
@@ -33,7 +37,7 @@ class SubItemController extends Controller
             $query->where('subtitle','like','%'.$q.'%')->orWhere('subcontent','like','%'.$q.'%');
         }
 
-        $sub_items = $query->orderBy('created_at','desc')->paginate($perpage);  // ->get();
+        $sub_items = $query->orderBy('created_at','desc')->paginate($perpage);  // simplePaginate($perpage);  // ->get();
         return view('subitem.index')
         ->with('sub_items',$sub_items->appends($request->except('page')))
         ->with('request',$request->except('page'));
@@ -46,6 +50,9 @@ class SubItemController extends Controller
      */
     public function create()
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+
         $items = Item::all();
         return view('subitem.create', ['items' => $items]);
     }
@@ -58,7 +65,10 @@ class SubItemController extends Controller
      */
     public function store(SubItemRequest $request)
     {
-        Log::info('store');
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$request: '.$request);
+
         $sub_item = new SubItem;
         $form = $request->all();
         unset($form['_token']);
@@ -102,6 +112,10 @@ class SubItemController extends Controller
      */
     public function show($id)
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$id: '.$id);
+
         $sub_item = SubItem::find($id);
         return view('subitem.show', ['sub_item' => $sub_item]);
     }
@@ -114,6 +128,10 @@ class SubItemController extends Controller
      */
     public function edit($id)
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$id: '.$id);
+
         $items = Item::all();
         $sub_item = SubItem::find($id);
         return view('subitem.edit', ['items' => $items, 'sub_item' => $sub_item]);
@@ -128,7 +146,11 @@ class SubItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Log::info('update');
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$id: '.$id);
+        Log::debug('$request: '.$request);
+
         $sub_item = SubItem::find($id);
         $form = $request->all();
         unset($form['_token']);
@@ -172,6 +194,10 @@ class SubItemController extends Controller
      */
     public function destroy($id)
     {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+        Log::debug('$id: '.$id);
+
         $sub_item = SubItem::find($id);
         $sub_item->delete();
         return redirect('/subitem');

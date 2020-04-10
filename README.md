@@ -286,6 +286,12 @@ $ php artisan jwt:secret
 
 ### User モデルと guard 設定を更新する
 
+### ApiController を生成する
+
+```ps
+$ php artisan make:controller ApiController
+```
+
 ---
 
 Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

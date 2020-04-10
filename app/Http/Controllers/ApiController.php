@@ -29,6 +29,34 @@ class ApiController extends Controller
         return response()->json(auth()->user());
     }
 
+    /**
+     * Log the user out (Invalidate the token).
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout()
+    {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+
+        auth()->logout();
+
+        return response()->json(['message' => 'Successfully logged out']);
+    }
+
+    /**
+     * Refresh a token.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh()
+    {
+        Log::debug(get_class($this).' '.__FUNCTION__.'()');
+        Log::debug('User: '.Auth::user());
+
+        return $this->respondWithToken(auth()->refresh());
+    }
+
     protected function respondWithToken($token)
     {
         Log::debug(get_class($this).' '.__FUNCTION__.'()');

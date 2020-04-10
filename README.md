@@ -284,6 +284,8 @@ $ php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceP
 $ php artisan jwt:secret
 ```
 
+### User モデルと guard 設定を更新する
+
 ---
 
 Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

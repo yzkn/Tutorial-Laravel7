@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Storage;
 use App\Item;
 use App\SubItem;
 
-use App\StringUtil;
-
 use App\Services\Util;
 
 use App\Http\Requests\SubItemRequest;
@@ -88,14 +86,14 @@ class SubItemController extends Controller
 
             $temppath = $request->file('filepath')->store('public/temp');
             $temppath = str_replace('public/temp', 'storage/temp', $temppath);
-            if(!\App\Services\Util::is_picture($temppath)){
+            if(!Util::is_picture($temppath)){
                 Storage::delete($temppath);
                 $sub_item->save();
                 return redirect('/subitem');
             }
 
             Storage::delete($temppath);
-            $newpath = StringUtil::gen_guid();
+            $newpath = Util::GUID();
             $request->file('filepath')->storeAs('public/uploaded', $newpath);
             $sub_item->filepath = $newpath;
         }
@@ -170,14 +168,14 @@ class SubItemController extends Controller
 
             $temppath = $request->file('filepath')->store('public/temp');
             $temppath = str_replace('public/temp', 'storage/temp', $temppath);
-            if(!\App\Services\Util::is_picture($temppath)){
+            if(!Util::is_picture($temppath)){
                 Storage::delete($temppath);
                 $sub_item->save();
                 return redirect('/subitem');
             }
 
             Storage::delete($temppath);
-            $newpath = StringUtil::gen_guid();
+            $newpath = Util::GUID();
             $request->file('filepath')->storeAs('public/uploaded', $newpath);
             $sub_item->filepath = $newpath;
         }

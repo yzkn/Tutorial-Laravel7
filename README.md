@@ -313,6 +313,13 @@ GET [/api/me](http://127.0.0.1:8000/api/me) に、以下のヘッダを指定し
     -   `Authorization`
         -   `Bearer <上で取得したaccess_token>`
 
+### API 用のコントローラーを作成・編集
+
+```ps
+$ php artisan make:controller ApiItemController --resource --api
+$ php artisan make:controller ApiSubItemController --resource --api
+```
+
 ---
 
 Copyright (c) 2020 YA-androidapp(https://github.com/YA-androidapp) All rights reserved.

@@ -20,4 +20,6 @@ Route::group(["middleware" => "guest:api"], function () {
 
 Route::group(["middleware" => "auth:api"], function () {
     Route::get("/me", "ApiController@me");
+    Route::apiResource('/item', 'ApiItemController');
+    Route::apiResource('/subitem', 'ApiSubItemController');
 });
